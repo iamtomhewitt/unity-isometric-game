@@ -31,7 +31,7 @@ namespace Player
 		{
 			Gizmos.color = Color.red;
 			if (drawGizmo)
-				Gizmos.DrawWireCube(feetPosition.position, new Vector3(5f, .5f, 5f));
+				Gizmos.DrawWireCube(feetPosition.position, new Vector3(playerController.groundPoundRadius, .5f, 5f));
 		}
 
 		private void OnTriggerEnter(Collider other)
@@ -93,16 +93,28 @@ namespace Player
 						GetComponent<PlayerUIController>().RechargeGroundPound();
 
 						// Inflict damage upon enemies in range
-						Collider[] enemiesInRange = Physics.OverlapBox(feetPosition.position, new Vector3(5f, .5f, 5f));
-						for (int i = 0; i < enemiesInRange.Length; i++)
+						//Collider[] objectsInRange = Physics.OverlapBox(feetPosition.position, new Vector3(playerController.groundPoundRadius, .5f, 5f));
+						Collider[] objectsInRange = Physics.OverlapCapsule(feetPosition.position, feetPosition.position + Vector3.up / 10, playerController.groundPoundRadius);
+						for (int i = 0; i < objectsInRange.Length; i++)
 						{
-							switch (enemiesInRange[i].tag)
+							GameObject obj = objectsInRange[i].gameObject;
+
+							switch (obj.tag)
 							{
+
 								case Tags.MINION:
-									Vector3 direction = enemiesInRange[i].transform.position - transform.position;
+									Vector3 direction = obj.transform.position - transform.position;
 									direction = -direction.normalized;
-									enemiesInRange[i].gameObject.GetComponent<HealthController>().RemoveHealth(1);
-									enemiesInRange[i].gameObject.GetComponent<Minion>().KnockBack(direction);
+									obj.gameObject.GetComponent<HealthController>().RemoveHealth(1);
+									obj.gameObject.GetComponent<Minion>().KnockBack(direction);
+									break;
+
+								case Tags.BARRELL:
+									obj.GetComponent<DestroyableObject>().Destroy();
+									break;
+
+								case Tags.CRATE:
+									obj.GetComponent<DestroyableObject>().Destroy();
 									break;
 							}
 						}

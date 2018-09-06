@@ -15,7 +15,9 @@ namespace Player
 		[Space()]
 		public bool canDoubleJump;
 		public bool canGroundPound;
-		public bool doingGroundPound;		
+		public bool doingGroundPound;
+
+		public float groundPoundRadius;
 
 		private Vector3 isometricForward = new Vector3(-1f, 0f, 1f);
 		private Vector3 isometricRight = new Vector3(1f, 0f, 1f);

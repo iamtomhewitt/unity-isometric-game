@@ -1,0 +1,57 @@
+﻿===============
+	LEVEL 1
+===============
+Items/Objects:
+	Breakable Barrells/Crates
+	Coins
+	
+Enemies Introduced:
+	Walker Minion
+	Hammerhead Minion
+
+Puzzles/Level Design Introduced:
+	Opening a chest gives a reward
+	Basic Platforming
+
+Other:
+	Cannon & exploding barrells introduced at the end with a lot of enemies, similar to the giant mushroom technique at the end of the first
+	New Super Mario Bros level
+
+
+===============
+	LEVEL 2
+===============
+Items/Objects:
+	Breakable Barrells/Crates
+	Coins
+	Exploding Barrells are less frequent
+	
+Enemies Introduced:
+	Shooter Minion
+	Walker Leader
+	Hammerhead Leader
+
+Puzzles/Level Design Introduced:
+	Vertical & Horizontal Moving Platforms
+
+Other:
+	Different heights of the map which the moving platforms help get to
+	Walls that you have to get halfway up with a moving platofrm, then jump across wall parts to get up the rest
+	
+
+===============
+	LEVEL 3
+===============
+Items/Objects:
+	Breakable Barrells/Crates
+	Coins
+	Exploding Barrells
+	
+Enemies Introduced:
+	Shooter Leader
+
+Puzzles/Level Design Introduced:
+	Explodeable walls/floors to progress
+
+Other:
+	

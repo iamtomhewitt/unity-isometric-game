@@ -17,12 +17,19 @@ public class ExplosiveBarrell : DestroyableObject
 
 		for (int i = 0; i < objectsInRange.Length; i++)
 		{
-			if (objectsInRange[i].GetComponent<HealthController>())
-			{
-				objectsInRange[i].GetComponent<HealthController>().RemoveHealth(2);
-			}
-		}
+			// Return from the loop if we are evaluating ourselves
+			if (objectsInRange[i].gameObject == this.gameObject)
+				break;
 
-		Destroy(this.gameObject);
+			if (objectsInRange[i].GetComponent<HealthController>())
+				objectsInRange[i].GetComponent<HealthController>().RemoveHealth(2);
+
+			if (objectsInRange[i].GetComponent<ExplosiveBarrell>())
+				objectsInRange[i].GetComponent<ExplosiveBarrell>().Destroy();
+
+			if (objectsInRange[i].GetComponent<Crate>())
+				objectsInRange[i].GetComponent<Crate>().Destroy();
+		}
+			Destroy(this.gameObject);
 	}
 }
