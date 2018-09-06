@@ -1,0 +1,69 @@
+STORY
+=======
+Multiple world style levels like in new super mario bros (grass, dungeon, others). Character's best friend Wilbur the pig has been stolen by the boss of that world, for example
+grass world is the minion boss, dungeon could be a giant spider or something.
+
+Objective is to progress through the levels and defeat enemies along the way.
+
+There are enemies, and pickups, and an end portal to get to to complete the level.
+
+There is a boss battle, and after defeated, wilbur is stolen by another boss (??) hence transitioning into the next world.
+
+
+PUZZLES
+=======
+- Switch & Bridge
+- Platformers
+- Bomb & Wall (bomb dispenser + push?)
+- Laser & target (push laser block)
+- General Push blocks?
+- Elevator block that rises when stood on, and goes down as soon as jumped off
+- Moving platforms
+
+lara croft go has some good level design ideas
+
+
+PLAYER
+=======
+Attacks
+	- Ground Pound
+	- Jump
+	- Blasters (bigger ones unlocked from chest, limited ammo/time?)
+
+UI
+	- Health
+	- Face/colour icon
+	- Score
+	- Lives
+
+
+PICKUPS
+=======
+Weapons (found in chests?)
+Coins (50 = extra life, maybe a gun?)
+
+
+
+ENEMIES
+=======
+Minions
+	Walkers (Rush attack)
+		Weak
+		Fast
+		Low Attack
+	Hammerhead (Rush & then AoE attack)
+		Weak
+		Slow
+		High Attack
+	Shooter (Ranged)
+		Medium
+		Medium
+		Low Attack
+	Crab Like Boss
+		Strong
+		Medium
+		Strong cannon attack
+
+Turrets
+	Ranged
+	Only destroyed by guns/explosions/bombs

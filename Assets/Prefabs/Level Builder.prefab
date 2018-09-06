@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1364799785051698}
+  m_IsPrefabParent: 1
+--- !u!1 &1364799785051698
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4902746508721586}
+  - component: {fileID: 114638867515070768}
+  m_Layer: 0
+  m_Name: Level Builder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4902746508721586
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1364799785051698}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114638867515070768
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1364799785051698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18fa6384a1053ca438dbaf0437074280, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blueprint: {fileID: 2800000, guid: 963eeeeb49643ae4586d53ec2159b99b, type: 3}
+  colourMapping:
+  - name: Ground Block
+    colour: {r: 0.7254902, g: 0.47843137, b: 0.34117648, a: 1}
+    prefab: {fileID: 1140060297930884, guid: 30fb84946a46210478300d2f20751d1a, type: 2}
+    parent: {fileID: 0}
+  - name: Grass Block 1
+    colour: {r: 0.13333334, g: 0.69411767, b: 0.29803923, a: 1}
+    prefab: {fileID: 1144548233310024, guid: be8770872fba91449a74db11b307bc80, type: 2}
+    parent: {fileID: 0}
+  - name: Grass Block 2
+    colour: {r: 0.70980394, g: 0.9019608, b: 0.11372549, a: 1}
+    prefab: {fileID: 1601535531001718, guid: 4d6608333088cc84eaf17d935132e1a7, type: 2}
+    parent: {fileID: 0}
+  - name: Flower Block
+    colour: {r: 1, g: 0.9490196, b: 0, a: 1}
+    prefab: {fileID: 1548886422402700, guid: 428caa5ac46cc8e46ad8bf57526ea9e9, type: 2}
+    parent: {fileID: 0}
