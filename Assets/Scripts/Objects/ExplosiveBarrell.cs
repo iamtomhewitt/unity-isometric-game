@@ -30,6 +30,7 @@ public class ExplosiveBarrell : DestroyableObject
 			if (objectsInRange[i].GetComponent<Crate>())
 				objectsInRange[i].GetComponent<Crate>().Destroy();
 		}
-			Destroy(this.gameObject);
+
+		Destroy(this.gameObject);
 	}
 }

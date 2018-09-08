@@ -8,10 +8,11 @@ namespace Minions
 {
 	public class ShooterMinion : Minion
 	{
-		[Header("Shooter Settings")]
-		public float chaseRange;
+		[Header("Range Settings")]
+		public float walkRange;
 		public float attackRange;
 
+		[Header("Bullet Settings")]
 		public GameObject bullet;
 		public Transform bulletSpawn;
 		public float fireRate;
@@ -23,82 +24,60 @@ namespace Minions
 		[HideInInspector]
 		public List<GameObject> bulletPool;
 
+		private bool attackCoroutineRunning;
+
 		void Start()
 		{
 			InitialiseBulletPool();
 
 			animationController = GetComponent<MinionAnimationController>();
-			rb					= GetComponent<Rigidbody>();
-			agent				= GetComponent<NavMeshAgent>();
-			target				= GameObject.FindGameObjectWithTag("Player").transform;
+			rb = GetComponent<Rigidbody>();
+			agent = GetComponent<NavMeshAgent>();
+			target = GameObject.FindGameObjectWithTag("Player").transform;
 
-			runSpeed			+= Random.Range(-0.5f, 0.5f);
-			fireRate			+= Random.Range(-0.25f, 0.25f);
-			cooldown			= fireRate;
+			runSpeed += Random.Range(-0.5f, 0.5f);
+			fireRate += Random.Range(-0.25f, 0.25f);
+			cooldown = fireRate;
 		}
 
-		void Update()
+		private void Update()
 		{
-			float distance = Vector3.Distance(transform.position, target.position);
-			cooldown -= Time.deltaTime;
+			LookAtPlayer();
 
-			if (distance > chaseRange && distance < chaseRange + 1f)
-			{
-				alertSprite.SetActive(true);
-				LookAtPlayer();
-			}
+			if (attackCoroutineRunning)
+				return;
+
+			if (InAttackRange())				
+				StartCoroutine(Attack());
+
+			else if (InWalkingRange())
+				MoveTo(target.position);
+
 			else
-				alertSprite.SetActive(false);
-
-			// Chase
-			if (distance < chaseRange && distance > attackRange)
-			{
-				LookAtPlayer();
-				agent.SetDestination(target.position);
-				animationController.ChangeAnimation(Constants.ANIMATION_RUN);
-			}
-
-			// Attack
-			else if (distance < attackRange)
-			{
-				LookAtPlayer();
-
-				if (cooldown <= 0f)
-				{
-					StartCoroutine(Attack());
-				}
-			}
-
-			// Idle
-			else
-			{
-				animationController.ChangeAnimation(Constants.ANIMATION_IDLE);
-				agent.SetDestination(transform.position);
-				feetDust.Stop();
-			}
+				Stop();
 		}
 
-		private void InitialiseBulletPool()
+		private bool InWalkingRange()
 		{
-			for (int i = 0; i < maxBullets; i++)
-			{
-				GameObject b = Instantiate(bullet, bulletSpawn.position, bulletSpawn.rotation) as GameObject;
-				b.SetActive(false);
-				b.transform.parent = GameObject.Find("Bullets").transform;
-				bulletPool.Add(b);
-			}
+			return (Vector3.Distance(transform.position, target.transform.position) <= walkRange);
+		}
+
+		private bool InAttackRange()
+		{
+			return (Vector3.Distance(transform.position, target.transform.position) <= attackRange);
 		}
 
 		public override IEnumerator Alert()
 		{
-			alertSprite.SetActive(true);
-			yield return new WaitForSeconds(1.5f + Random.Range(-0.25f, 0.2f));
-			alertSprite.SetActive(false);
+			// Not used
+			throw new System.NotImplementedException();
 		}
 
 		public override IEnumerator Attack()
 		{
-			agent.SetDestination(transform.position);
+			attackCoroutineRunning = true;
+
+			Stop();
 
 			cooldown = fireRate;
 
@@ -119,6 +98,37 @@ namespace Minions
 			yield return new WaitForSeconds(animationController.GetAnimationLength(Constants.ANIMATION_SHOOT));
 
 			animationController.ChangeAnimation(Constants.ANIMATION_IDLE);
+
+			MoveTo(target.position);
+
+			attackCoroutineRunning = false;
+		}
+
+		private void Stop()
+		{
+			agent.isStopped = true;
+			animationController.ChangeAnimation(Constants.ANIMATION_IDLE);
+			feetDust.Stop();
+		}
+
+		private void MoveTo(Vector3 position)
+		{
+			agent.isStopped = false;
+			agent.SetDestination(position);
+			animationController.ChangeAnimation(Constants.ANIMATION_RUN);
+			if (!feetDust.isPlaying)
+				feetDust.Play();
+		}
+
+		private void InitialiseBulletPool()
+		{
+			for (int i = 0; i < maxBullets; i++)
+			{
+				GameObject b = Instantiate(bullet, bulletSpawn.position, bulletSpawn.rotation) as GameObject;
+				b.SetActive(false);
+				b.transform.parent = GameObject.Find("Bullets").transform;
+				bulletPool.Add(b);
+			}
 		}
 	}
 }

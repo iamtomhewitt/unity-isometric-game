@@ -101,7 +101,6 @@ namespace Player
 
 							switch (obj.tag)
 							{
-
 								case Tags.MINION:
 									Vector3 direction = obj.transform.position - transform.position;
 									direction = -direction.normalized;

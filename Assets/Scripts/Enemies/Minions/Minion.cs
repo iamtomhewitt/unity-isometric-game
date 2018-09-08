@@ -12,7 +12,6 @@ namespace Minions
 		[Header("Base Settings")]
 		public float runSpeed;
 
-		public ParticleSystem hitEffect;
 		public ParticleSystem feetDust;
 		public GameObject alertSprite;
 		public Text debug;
@@ -40,7 +39,7 @@ namespace Minions
 			// Rotate smoothly to look at the player
 			Vector3 lookRotation = (target.position - transform.position);
 			lookRotation.y = 0f;
-			transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(lookRotation), 2f * Time.deltaTime);
+			transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(lookRotation), 5f * Time.deltaTime);
 		}
 
 		private void OnCollisionEnter(Collision other)
@@ -48,7 +47,6 @@ namespace Minions
 			if (other.gameObject.tag == Tags.BULLET)
 			{
 				GetComponent<HealthController>().RemoveHealth(1);
-				hitEffect.Play();
 			}
 		}
 	}

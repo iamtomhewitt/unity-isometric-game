@@ -1,4 +1,6 @@
-﻿===============
+﻿Cave/Nether/Underground style
+
+===============
 	LEVEL 1
 ===============
 Items/Objects:
@@ -49,6 +51,7 @@ Items/Objects:
 	
 Enemies Introduced:
 	Shooter Leader
+	Turret
 
 Puzzles/Level Design Introduced:
 	Explodeable walls/floors to progress

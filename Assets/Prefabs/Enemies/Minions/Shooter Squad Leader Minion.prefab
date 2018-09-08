@@ -2053,7 +2053,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1560302156352792}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 11, y: 0.5, z: 30}
+  m_LocalPosition: {x: -4.75, y: 0.5, z: -3.5}
   m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
   m_Children:
   - {fileID: 4300865557674164}
@@ -4514,13 +4514,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb5d57bcf285763499ad0811d3af1fbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  runSpeed: 2.25
-  hitEffect: {fileID: 198558472023664498}
+  runSpeed: 1
   feetDust: {fileID: 198956471833079924}
   alertSprite: {fileID: 1384976757635118}
   debug: {fileID: 114807187910057462}
-  chaseRange: 8
-  attackRange: 5
+  walkRange: 10
+  attackRange: 6
   bullet: {fileID: 1368611802949610, guid: 8efeee7e84d983248a5c686316ed8b88, type: 2}
   bulletSpawn: {fileID: 4300865557674164}
   fireRate: 0.8
@@ -4580,7 +4579,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bf68ea1da1149a469b9a97581de5c61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 5
+  health: 3
   healthbar: {fileID: 114072057987456378}
   deathExplosion: {fileID: 1735671601882938, guid: 9deef01a37e27684986a7479ffe1cc92,
     type: 2}
@@ -9555,8 +9554,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.1
-      minScalar: 0.05
+      scalar: 0.15
+      minScalar: 0.1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -9871,7 +9870,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 30
+    maxNumParticles: 100
     size3D: 0
     rotation3D: 0
     gravityModifier:
@@ -10188,7 +10187,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 30
+        scalar: 100
         minScalar: 0
         maxCurve:
           serializedVersion: 2
