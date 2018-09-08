@@ -13,6 +13,11 @@ namespace Player
 		public Weapon currentWeapon;
 		public string startingWeapon;
 
+		[Space()]
+		[SerializeField]
+		private GameObject dynamite;
+		public bool hasDynamite;
+
 		private void Start()
 		{
 			ChangeWeapon(startingWeapon);
@@ -61,6 +66,16 @@ namespace Player
 			}
 
 			print("'" + weaponName + "' not found!");
+		}
+
+		public void DropDynamite()
+		{
+			if (hasDynamite)
+			{
+				GameObject d = Instantiate(dynamite, transform.position, Quaternion.identity) as GameObject;
+			}
+
+			hasDynamite = false;
 		}
 	}
 }

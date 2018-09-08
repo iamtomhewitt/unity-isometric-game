@@ -146,6 +146,12 @@ namespace Player
 					Destroy(other.gameObject);
 					break;
 
+				case Tags.PICKUP_DYNAMITE:
+					GetComponent<PlayerWeaponsController>().hasDynamite = true;
+					GetComponent<PlayerUIController>().SetDynamiteIcon(true);
+					Destroy(other.gameObject);
+					break;
+
 				case Tags.CHECKPOINT:
 					Checkpoint c = other.gameObject.GetComponent<Checkpoint>();
 					GetComponent<PlayerCheckpointController>().UpdateCheckpoint(c);

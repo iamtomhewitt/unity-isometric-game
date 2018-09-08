@@ -26,6 +26,7 @@ namespace Player
 		private PlayerCollisionController collisionController;
 		private PlayerParticleController particleController;
 		private PlayerWeaponsController weaponsController;
+		private PlayerUIController uiController;
 		private Rigidbody rb;
 
 		private float originalMovementSpeed;
@@ -38,6 +39,7 @@ namespace Player
 			collisionController = GetComponent<PlayerCollisionController>();
 			particleController	= GetComponent<PlayerParticleController>();
 			weaponsController	= GetComponent<PlayerWeaponsController>();
+			uiController		= GetComponent<PlayerUIController>();
 			rb					= GetComponent<Rigidbody>();
 
 			animationController.ChangeAnimation(Constants.ANIMATION_IDLE);
@@ -80,6 +82,11 @@ namespace Player
 			if (Input.GetButtonDown(XboxController.xboxXButton) && canGroundPound)
 			{
 				StartCoroutine(GroundPound());
+			}
+			if (Input.GetButtonDown(XboxController.xboxBButton))
+			{
+				uiController.SetDynamiteIcon(false);
+				weaponsController.DropDynamite();
 			}
 
 			if (Input.GetAxis(XboxController.rightTrigger) >= 1f)

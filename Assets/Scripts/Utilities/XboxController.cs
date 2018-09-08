@@ -12,4 +12,5 @@ public class XboxController
 
 	public const string xboxAButton		= "XboxControllerAButton";
 	public const string xboxXButton		= "XboxControllerXButton";
+	public const string xboxBButton		= "XboxControllerBButton";
 }

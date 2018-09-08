@@ -13,6 +13,7 @@ public static class Tags
 
 	public const string PICKUP_BLASTER = "Pickup Blaster";
 	public const string PICKUP_CANNON = "Pickup Cannon";
+	public const string PICKUP_DYNAMITE = "Pickup Dynamite";
 
 	public const string BARRELL = "Barrell";
 	public const string CRATE	= "Crate";

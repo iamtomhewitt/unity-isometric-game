@@ -15,6 +15,11 @@ public class CameraController : MonoBehaviour
 		instance = this;
 	}
 
+	private void Start()
+	{
+		player = GameObject.FindGameObjectWithTag("Player").transform;
+	}
+
 	void Update()
     {
         transform.position = Vector3.Slerp(transform.position, player.position + offset, moveSpeed * Time.deltaTime);

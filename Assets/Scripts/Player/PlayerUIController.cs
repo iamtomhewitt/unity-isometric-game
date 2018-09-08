@@ -8,14 +8,12 @@ namespace Player
 	public class PlayerUIController : MonoBehaviour
 	{
 		public Slider groundPoundSlider;
-
 		public Text scoreText;
 		public Text livesText;
+		public Image dynamiteIcon;
 
 		private PlayerController playerController;
-
 		private float full;
-
 		private bool groundPoundSliderFull;
 
 		public static PlayerUIController instance;
@@ -25,6 +23,8 @@ namespace Player
 			playerController = GetComponent<PlayerController>();
 			full = groundPoundSlider.value;
 			groundPoundSliderFull = true;
+
+			SetDynamiteIcon(false);
 
 			instance = this;
 		}
@@ -67,6 +67,11 @@ namespace Player
 			groundPoundSlider.value = full;
 			playerController.canGroundPound = true;
 			groundPoundSliderFull = true;
+		}
+
+		public void SetDynamiteIcon(bool on)
+		{
+			dynamiteIcon.enabled = on;
 		}
 	}
 }
